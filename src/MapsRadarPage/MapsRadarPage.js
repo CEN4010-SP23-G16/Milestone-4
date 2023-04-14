@@ -1,26 +1,40 @@
 import React, { useState } from 'react';
-import { Container } from 'react-bootstrap';
 import TempMap from '../MapsRadarPage/TempMap';
+import RainMap from '../MapsRadarPage/RainMap';
+import WindMap from '../MapsRadarPage/WindMap';
+import CloudMap from '../MapsRadarPage/CloudMap';
+import PressureMap from '../MapsRadarPage/PressureMap';
 
 export default function MapsAndRadar() {
   const [map, setMap] = useState('map1');
 
   const renderMap = () => {
     switch (map) {
-      case 'map1':
+      case 'tempMap':
         return <TempMap />;
+      case 'rainMap':
+        return <RainMap />;
+      case 'windMap':
+        return <WindMap />;
+      case 'cloudMap':
+        return <CloudMap />;
+      case 'pressureMap':
+        return <PressureMap />;
       default:
         return <TempMap />;
     }
   };
   
+  
 
   return (
     <>
       <div className="d-flex justify-content-center my-0">
-        <button className="btn btn-primary mx-1" style={{position: 'absolute', zIndex: '999'}} onClick={() => setMap('TempMap')}>
-          Temp Map
-        </button>
+        <button className={`btn btn-primary mx-1 ${map === 'tempMap' ? 'active' : ''}`} style={{position: 'absolute', zIndex: '999', bottom: '50px', left: '3px', width: '119px'}} onClick={() => setMap('tempMap')}>Temperature</button>
+        <button className={`btn btn-primary mx-1 ${map === 'rainMap' ? 'active' : ''}`} style={{position: 'absolute', zIndex: '999', bottom: '100px', left: '3px', width: '119px'}} onClick={() => setMap('rainMap')}>Precipitation</button>
+        <button className={`btn btn-primary mx-1 ${map === 'windMap' ? 'active' : ''}`} style={{position: 'absolute', zIndex: '999', bottom: '150px', left: '3px', width: '119px'}} onClick={() => setMap('windMap')}>Wind Speed</button>
+        <button className={`btn btn-primary mx-1 ${map === 'cloudMap' ? 'active' : ''}`} style={{position: 'absolute', zIndex: '999', bottom: '200px', left: '3px', width: '119px'}} onClick={() => setMap('cloudMap')}>Clouds</button>
+        <button className={`btn btn-primary mx-1 ${map === 'pressureMap' ? 'active' : ''}`} style={{position: 'absolute', zIndex: '999', bottom: '250px', left: '3px', width: '119px'}} onClick={() => setMap('pressureMap')}>Pressure</button>
       </div>
       {renderMap()}
     </>

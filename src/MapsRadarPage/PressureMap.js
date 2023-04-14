@@ -11,7 +11,7 @@ export default function MapsRadarPage() {
   useEffect(() => {
     const newMap = new mapboxgl.Map({
       container: 'map',
-      style: 'mapbox://styles/mapbox/dark-v10', //v11 is globe
+      style: 'mapbox://styles/mapbox/light-v10', //v11 is globe
       center: [-98, 38],
       zoom: 3.5,
     });
@@ -31,20 +31,20 @@ export default function MapsRadarPage() {
       const data = await response.json();
       console.log(data);
 
-      const temperatureLayer = {
-        id: 'temperature',
+      const pressureLayer = {
+        id: 'pressure-layer',
         type: 'raster',
         source: {
           type: 'raster',
           tiles: [
-            `https://tile.openweathermap.org/map/temp_new/{z}/{x}/{y}.png?appid=${API_KEY}`
+            `https://tile.openweathermap.org/map/pressure_new/{z}/{x}/{y}.png?appid=${API_KEY}`
           ],
           tileSize: 256,
           attribution:
             'Map data © OpenWeatherMap'
         }
       };
-      map.addLayer(temperatureLayer);
+      map.addLayer(pressureLayer);
     };
 
     getWeatherData();
