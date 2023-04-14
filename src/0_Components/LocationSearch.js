@@ -67,9 +67,7 @@ export default function LocationSearch() {
               setLocation(suggestion.name);
               setSuggestions([]);
             }}>
-              {suggestion.name}
-              <p>, </p>
-              {suggestion.sys.country}
+              {suggestion.name}, {suggestion.sys.country}
             </ul>
           ))}
         </ul>
