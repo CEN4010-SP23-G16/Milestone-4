@@ -13,13 +13,20 @@ const initialState = {
 export const signUpUser = createAsyncThunk(
   'user/signUpUser',
   async (userData) => {
-    const response = await fetch('/api/signUpUser', {
-      method: 'POST',
-      body: JSON.stringify(userData),
-      headers: { 'Content-Type': 'application/json' },
-    });
-    const data = await response.json();
-    return data;
+    console.log(userData);
+    try {
+      const response = await fetch('http://localhost:5000/signUpUser', {
+        method: 'POST',
+        body: JSON.stringify(userData),
+        headers: {
+          'Content-Type': 'application/json',
+        },
+      });
+      const data = await response.json();
+      return data;
+    } catch (error) {
+      throw Error('Something went wrong');
+    }
   }
 );
 

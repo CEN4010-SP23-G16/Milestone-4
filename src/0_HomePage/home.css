@@ -40,17 +40,17 @@
 }
 
 input {
-    padding: .7rem 3rem;
     font-size: 1.2rem;
     border-radius: 25px;
     border: 1.5px solid rgba(255, 255, 255, 0.8);
     background: rgba(255, 255, 255, 0.1);
     text-align: left;
-    color: white;    
+    color: white;
 }
 
 .searchbox {
     margin-left: 20px;
+    padding: .7rem 3rem;
 }
 
 ::placeholder {
@@ -97,7 +97,7 @@ ul ul {
     display: block;
     position: relative;
     padding: 5px;
-    width: 230px; 
+    width: 230px;
     height: 45px;
     margin: auto;
     border-radius: 10px;

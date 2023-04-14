@@ -10,7 +10,7 @@ export default function LocationSearch() {
   const [errorMessage, setErrorMessage] = useState('');
 
   const url = `https://api.openweathermap.org/data/2.5/weather?q=${location}&units=imperial&appid=ea2ebba4214c311f36ba1cc2619ed14b`;
-  const forcastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=imperial&appid=ea2ebba4214c311f36ba1cc2619ed14b`;
+  // const forcastUrl = `https://api.openweathermap.org/data/2.5/forecast?q=${location}&units=imperial&appid=ea2ebba4214c311f36ba1cc2619ed14b`;
   const autocomplete = `https://api.openweathermap.org/data/2.5/find?cnt=5&q=${location}&appid=ea2ebba4214c311f36ba1cc2619ed14b`;
   
   const searchLocation = () => {
@@ -68,7 +68,7 @@ export default function LocationSearch() {
               setSuggestions([]);
             }}>
               {suggestion.name}
-              <a>, </a>
+              <p>, </p>
               {suggestion.sys.country}
             </ul>
           ))}

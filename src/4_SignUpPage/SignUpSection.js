@@ -1,14 +1,16 @@
 import {React, useState} from 'react';
 import { Container, Row, Col, Card, Button, Form } from 'react-bootstrap';
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
 import { useDispatch } from 'react-redux';
-import { signUpUser } from '../Redux/slices/userSlice';
+import { signUpUser, updateEmail, updateFirstName, updateLastName, updatePassword } from '../Redux/slices/userSlice';
 
 export default function SignUpSection() {
+
   const [validated, setValidated] = useState(false);
   const dispatch = useDispatch();
+  let navigate = useNavigate();
 
-  const handleSubmit = (event) => {
+  const handleSubmit = async (event) => {
     event.preventDefault();
     const form = event.currentTarget;
     if (form.checkValidity() === false) {
@@ -17,12 +19,24 @@ export default function SignUpSection() {
       return;
     }
 
-    const firstName = event.target.elements.firstname.value;
-    const lastName = event.target.elements.lastname.value;
-    const email = event.target.elements.email.value;
-    const password = event.target.elements.password.value;
+    let firstName = event.target.elements.firstname.value;
+    let lastName = event.target.elements.lastname.value;
+    let email = event.target.elements.email.value;
+    let password = event.target.elements.password.value;
+    
+    dispatch(updateFirstName(firstName));
+    dispatch(updateLastName(lastName));
+    dispatch(updateEmail(email));
+    dispatch(updatePassword(password));
 
-    dispatch(signUpUser({firstName, lastName, email, password}));
+    try {
+      await dispatch(signUpUser({firstName, lastName, email, password}));
+      // Sign-up was successful, redirect the user to the home page
+      navigate('/settings');
+    } catch (error) {
+      // Sign-up failed, display an error message to the user
+      console.log('Error signing up:', error.message);
+    }
   };
 
   
@@ -51,7 +65,7 @@ export default function SignUpSection() {
                         type="text"
                         placeholder="First name"
                       />
-                      <Form.Control.Feedback type='invalid'>Enter your First Name</Form.Control.Feedback>
+                      <Form.Control.Feedback type='invalid'>Provide a valid First Name</Form.Control.Feedback>
                     </Form.Group>
                     <Form.Group as={Col} lg='6' controlId="lastname">
                       <Form.Label>Last name</Form.Label>
@@ -60,7 +74,7 @@ export default function SignUpSection() {
                         type="text"
                         placeholder="Last name"
                       />
-                      <Form.Control.Feedback type='invalid'>Enter your Last Name</Form.Control.Feedback>
+                      <Form.Control.Feedback type='invalid'>Provide a valid Last Name</Form.Control.Feedback>
                     </Form.Group>
                   </Row>
 
@@ -75,7 +89,7 @@ export default function SignUpSection() {
 
                     <Form.Group controlId="password">
                       <Form.Label>Password</Form.Label>
-                      <Form.Control type="text" placeholder="Password" required />
+                      <Form.Control type="Password" placeholder="Password" required />
                       <Form.Control.Feedback type="invalid">
                         Please provide a valid Password.
                       </Form.Control.Feedback>

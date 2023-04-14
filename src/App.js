@@ -1,12 +1,12 @@
 import Header from './0_Components/Header';
 import { Routes, Route } from 'react-router-dom';
 import './App.css';
-import HomePage from './HomePage/HomePage';
-import WeatherPage from './WeatherPage/WeatherPage';
-import MapsRadarPage from './MapsRadarPage/MapsRadarPage';
-import AlertPage from './AlertPage/AlertPage';
+import HomePage from './0_HomePage/HomePage';
+import WeatherPage from './1_WeatherPage/WeatherPage';
+import MapsRadarPage from './2_MapsRadarPage/MapsRadarPage';
+import AlertPage from './3_AlertPage/AlertPage';
 import LoginSection from './0_Components/LoginSection';
-import SignUpSection from './0_Components/SignUpSection';
+import SignUpSection from './4_SignUpPage/SignUpSection';
 import UserSetting from './UserSettings/UserSetting';
 
 function App() {

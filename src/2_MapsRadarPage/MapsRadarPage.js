@@ -1,9 +1,9 @@
 import React, { useState } from 'react';
-import TempMap from '../MapsRadarPage/TempMap';
-import RainMap from '../MapsRadarPage/RainMap';
-import WindMap from '../MapsRadarPage/WindMap';
-import CloudMap from '../MapsRadarPage/CloudMap';
-import PressureMap from '../MapsRadarPage/PressureMap';
+import TempMap from '../2_MapsRadarPage/TempMap';
+import RainMap from '../2_MapsRadarPage/RainMap';
+import WindMap from '../2_MapsRadarPage/WindMap';
+import CloudMap from '../2_MapsRadarPage/CloudMap';
+import PressureMap from '../2_MapsRadarPage/PressureMap';
 
 export default function MapsAndRadar() {
   const [map, setMap] = useState('map1');
