@@ -18,6 +18,7 @@ function App() {
         <Route path='/' element={<HomePage />} />
         <Route path='/weather' element={<WeatherPage/>}/>
         <Route path='/maps-radar' element={<MapsRadarPage/>}/>
+        <Route path='/maps-radar/temperature-map' element={<MapsRadarPage/>}/>
         <Route path='/alerts' element={<AlertPage />} />
         <Route path='/settings' element={<UserSetting />} />
         <Route path='/signUpUser' element={ <SignUpSection/>} />

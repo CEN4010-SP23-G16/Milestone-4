@@ -1,44 +1,28 @@
-import React, { useState, useEffect } from 'react';
-import mapboxgl from 'mapbox-gl';
-import './MapsRadar.css';
+import React, { useState } from 'react';
+import { Container } from 'react-bootstrap';
+import TempMap from '../MapsRadarPage/TempMap';
 
-mapboxgl.accessToken = 'pk.eyJ1IjoiamVoYWQzOTIiLCJhIjoiY2xnOGh2Z200MGc4eTNsbmJ4bzk2b3ViayJ9.dxzPL3F1mQsRYs8_35d_fA';
+export default function MapsAndRadar() {
+  const [map, setMap] = useState('map1');
 
-export default function MapsRadarPage() {
-  const [map, setMap] = useState(null);
-
-  useEffect(() => {
-    const newMap = new mapboxgl.Map({
-      container: 'map',
-      style: 'mapbox://styles/mapbox/dark-v11',
-      center: [-98.5795, 39.8283],
-      zoom: 3
-    });
-
-    setMap(newMap);
-
-    return () => newMap.remove();
-  }, []);
-
-// Map done being generated
-
-  useEffect(() => {
-    if (!map) return;
-
-    const getWeatherData = async () => {
-      const response = await fetch(`https://api.openweathermap.org/data/2.5/box/city?bbox=-180,-90,180,90,10&appid=ea2ebba4214c311f36ba1cc2619ed14b`);
-      const data = await response.json();
-
+  const renderMap = () => {
+    switch (map) {
+      case 'map1':
+        return <TempMap />;
+      default:
+        return <TempMap />;
+    }
+  };
   
-    };
-
-    getWeatherData();
-    console.log(getWeatherData)
-  }, [map]);
 
   return (
     <>
-      <div id="map" style={{ width: '100%', height: '600px'}} />
+      <div className="d-flex justify-content-center my-0">
+        <button className="btn btn-primary mx-1" style={{position: 'absolute', zIndex: '999'}} onClick={() => setMap('TempMap')}>
+          Temp Map
+        </button>
+      </div>
+      {renderMap()}
     </>
   );
 }

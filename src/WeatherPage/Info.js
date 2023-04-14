@@ -9,7 +9,7 @@ export default function Info() {
   const unixTimestamp = location.state.dt; // replace with the `dt` attribute value from your API response
   const time = new Date(unixTimestamp * 1000);
   const formattedDate = time.toLocaleDateString('en-US', { month: 'short', day: 'numeric', year: 'numeric' }); // format the date as Month/Day/Year
-  const formattedTime = time.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit', hour12: true });
+  const formattedTime = time.toLocaleTimeString(undefined, { hour: 'numeric', minute: '2-digit', hourCycle: 'h12'});
 
   return (
     <>
@@ -47,7 +47,7 @@ export default function Info() {
 
         <Row>
           <Col>
-            <h2>Forcast</h2>
+            <h2>Forecast</h2>
           </Col>
         </Row>
         
