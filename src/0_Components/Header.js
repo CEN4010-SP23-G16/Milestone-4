@@ -22,13 +22,15 @@ export default function Header() {
 
             <Nav className="mx-auto">
 
-              <Nav.Link to="/" as={NavLink} className="mx-4 px-4">Home</Nav.Link>
+              <Nav.Link to="/" as={NavLink} className="mx-3 px-3">Home</Nav.Link>
 
               <Nav.Link to="/weather" as={NavLink} className="mx-3 px-3">Weather</Nav.Link>
 
               <Nav.Link to="/maps-radar" as={NavLink} className="mx-3 px-3">Maps & Radar</Nav.Link>
 
               <Nav.Link to="/alerts" as={NavLink} className="mx-3 px-3">Alerts</Nav.Link>
+
+              <Nav.Link to="/settings" as={NavLink} className="mx-3 px-3">Settings</Nav.Link>
             </Nav>
 
             {/*This would be more for the settings button */}
