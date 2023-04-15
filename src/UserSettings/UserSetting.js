@@ -1,13 +1,14 @@
 import React from 'react';
 import { Card, Container, Form } from 'react-bootstrap';
 import { useSelector } from 'react-redux';
+import './UserSettings.css'
 
 export default function UserSetting() {
   const firstName = useSelector(state => state.user.firstName);
 
   return (
     <>
-      <div className='background'>
+      <div className='setting-background'>
         <Container>
           <h1>Welcome {firstName}!</h1>
 
