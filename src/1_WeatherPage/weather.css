@@ -18,20 +18,27 @@
 
 @import url('https://fonts.googleapis.com/css2?family=Barlow&display=swap');
 
-h1, h2, h3, h4 {
+h2, h3, h4 {
     color: rgb(255, 255, 255);
     text-align: center;
     font-size: 25px;
     font-weight: bolder;
     font-family: 'Barlow', sans-serif;
     padding-top: 30px;
-    line-height: 200%;
+    line-height: 100%;
 
     animation: fadeIn 5s;
     -webkit-animation: fadeIn 5s;
     -moz-animation: fadeIn 5s;
     -o-animation: fadeIn 5s;
     -ms-animation: fadeIn 5s;
+}
+
+.namedate {
+    text-align: left;
+    color: white;
+    margin-left: -70px;
+    margin-top: 10px;
 }
 
 .percent {
@@ -46,6 +53,22 @@ h1, h2, h3, h4 {
     -moz-animation: fadeIn 5s;
     -o-animation: fadeIn 5s;
     -ms-animation: fadeIn 5s;
+}
+
+.title {
+   margin-left: -140px;
+}
+
+.weather_card h2 {
+    display: grid;
+    align-items: center;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+.forecast{
+    display: inline-flexbox;
 }
 
 @keyframes fadeIn {
