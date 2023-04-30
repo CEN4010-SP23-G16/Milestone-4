@@ -2,6 +2,7 @@ import React from 'react';
 import { Container, Row, Col } from 'react-bootstrap';
 import { useLocation } from 'react-router';
 import LocationSearch from '../0_Components/LocationSearch';
+import { BsCloudSunFill, BsCloudMoonFill, BsCloudsFill, BsCloudRainFill, BsFillCloudLightningRainFill, BsCloudHaze2, BsSnow } from "react-icons/bs"
 
 export default function Info() {
   const location = useLocation();
@@ -29,24 +30,27 @@ export default function Info() {
     return regionNames.of(country)
   }
 
-  return (
+ return (
     <>
-      <Container style={{ display: 'flex'}}>
+      <Container style={{ display: 'flex' }}>
         <Col md={6}>
-          <h1 className='namedate'>{location.state.name}, {convertCountryCode(location.state.sys.country)}</h1>
-          <h3 className='namedate' style={{marginTop: '-30px'}}>{convertTimeStamp(location.state.dt, location.state.timezone)}</h3>
+          <h1 className='namedate'>{location.state.weather.name}, {convertCountryCode(location.state.weather.sys.country)}</h1>
+          <h3 className='namedate' style={{ marginTop: '-30px' }}>{convertTimeStamp(location.state.weather.dt, location.state.weather.timezone)}</h3>
         </Col>
-        <div style={{ marginLeft: '-135px', marginTop: '10px'}}><LocationSearch location={location} /></div>
+        <div style={{ marginLeft: '-147px', marginTop: '10px' }}><LocationSearch location={location} /></div>
+      
         <Col>
-            <div className='d-inline-flex'>
-              <img
-                src={`https://openweathermap.org/img/wn/${location.state.weather[0].icon}.png`}
-                alt={location.state.weather[0].main}
-                width="100%"
-              />
-              <h2>Temperature {location.state.main.temp.toFixed()}ºF</h2>
-            </div>
-          </Col>
+          <div className='weathericon'>
+            {location.state.weather.weather[0].icon === "01d" ? <BsCloudSunFill /> :
+            location.state.weather.weather[0].icon === "01n" || location.state.weather.weather[0].icon === "02n" || location.state.weather.weather[0].icon === "03n" || location.state.weather.weather[0].icon === "04n" ? <BsCloudMoonFill /> :
+            location.state.weather.weather[0].icon === "02d" || location.state.weather.weather[0].icon === "03d" || location.state.weather.weather[0].icon === "04d" ? <BsCloudsFill /> :
+            location.state.weather.weather[0].icon === "09d" || location.state.weather.weather[0].icon === "09n" || location.state.weather.weather[0].icon === "10d" || location.state.weather.weather[0].icon === "10n" ? <BsCloudRainFill /> :
+            location.state.weather.weather[0].icon === "11d" || location.state.weather.weather[0].icon === "11n" ? <BsFillCloudLightningRainFill /> :
+            location.state.weather.weather[0].icon === "50d" || location.state.weather.weather[0].icon === "50n" ? <BsCloudHaze2 /> :
+            location.state.weather.weather[0].icon === "13d" || location.state.weather.weather[0].icon === "13n" ? <BsSnow /> : null}
+            <h2 style={{ display: 'inline-block', marginLeft: '10px' }}> {location.state.weather.main.temp.toFixed()}&deg;F</h2>
+          </div>
+        </Col>
       </Container>
 
       <Container className='weather_card'>
